@@ -97,7 +97,7 @@ def join(s, separator):
     else:
         return str(first(s)) + separator + join(rest(s), separator)
         
-print join(l2squared, ", ")
+print(join(l2squared, ", "))
 
 def partitions(n, m):
     if n == 0:
@@ -113,6 +113,6 @@ def partitions(n, m):
 def print_partitions(n, m):
     lists = partitions(n, m)
     strings = apply_to_all(lambda s: join(s, " + "), lists)
-    print join(strings, "\n")
+    print(join(strings, "\n"))
 
-print print_partitions(6, 4)
+print(print_partitions(6, 4))
