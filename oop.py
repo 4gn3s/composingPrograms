@@ -74,3 +74,10 @@ student = CrazyStudentAccount('John Smith')
 assert student.balance == 1
 assert student.deposit(100) == 99
 assert student.withdraw(10) == 88
+
+Account.__bool__ = lambda self: self.balance != 0
+
+if not ca:
+    print("Lamus has nothing") # not gonna be printed, ca.balance != 0
+if not Account('empty'):
+    print('empty account') # by default the balance is 0, so will be printed

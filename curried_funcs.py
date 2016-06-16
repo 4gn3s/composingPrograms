@@ -27,3 +27,20 @@ curried_pow_prim = curry2args(pow)
 assert curried_pow_prim(2)(3) == 8
 
 assert uncurry2args(curried_pow_prim)(2, 3) == 8
+
+def make_adder(n):
+    def adder(k):
+        return n + k
+    return adder
+    
+add_three = make_adder(3)
+assert add_three(4) == 7
+
+class Adder:
+    def __init__(self, n):
+        self.n = n 
+    def __call__(self, k):
+        return self.n + k
+        
+add_three_obj = Adder(3)
+assert add_three_obj(4) == 7

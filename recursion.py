@@ -67,3 +67,17 @@ def count_partitions(n, m):
     return count_partitions(n-m, m) + count_partitions(n, m-1)
 
 assert count_partitions(6, 4) == 9
+
+def count(f):
+    """
+    allows to count how many times a recursive function has been called
+    """
+    def counted(*args):
+        counted.call_count += 1
+        return f(*args)
+    counted.call_count = 0
+    return counted
+
+fibonacci_rec = count(fibonacci_rec)
+print("Fibonacci's 20th number: ", fibonacci_rec(20))
+print("Number of calls to Fib() used: ", fibonacci_rec.call_count)
