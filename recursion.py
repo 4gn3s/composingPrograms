@@ -80,4 +80,19 @@ def count(f):
 
 fibonacci_rec = count(fibonacci_rec)
 print("Fibonacci's 20th number: ", fibonacci_rec(20))
-print("Number of calls to Fib() used: ", fibonacci_rec.call_count)
+print("Number of calls to fib() used: ", fibonacci_rec.call_count)
+
+# memoization can be used as a higher order function
+# it creates a cache of previously computed results indexed by the arguments
+def memo(f):
+    cache = {}
+    def memoized(n):
+        if n not in cache:
+            cache[n] = f(n)
+        return cache[n]
+    return memoized
+
+counted_fib = count(fibonacci_rec)
+fibonacci_rec = memo(counted_fib)
+print("Fibonacci's 20th number: ", fibonacci_rec(20))
+print("Number of calls to fib() used: ", counted_fib.call_count)
